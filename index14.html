@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<p id="date1"></p>
+<script type="text/javascript">
+    var date1 = document.getElementById('date1');
+    setInterval(function () {
+        var date = new Date();
+        var year = date.getFullYear();
+
+        function setMonth(date) {
+            var month = date.getMonth();
+            if (month < 10) month = '0' + month.toString();
+            return month;
+        }
+
+        // var month = date.getMonth();
+        // if (month < 10) month = '0' + month.toString();
+        var day = date.getDate();
+        if (day < 10) day = '0' + day.toString();
+
+        function setWeekday(date) {
+            var weekday = date.getDay();
+            var weekdayEng = ['Monday', 'Tuesday', 'Wednesday', 'thursday', 'Friday', 'Saturday', 'Sunday'];
+            var num = weekday - 1;
+            return weekdayEng[num];
+        }
+
+        var hour = date.getHours();
+        if (hour < 10) hour = '0' + hour.toString();
+
+        function setAM(hour) {
+            var AM = '';
+            if (hour < 12) {
+                AM = 'AM';
+            } else AM = 'PM';
+            return AM;
+        }
+
+        var minute = date.getMinutes();
+        if (minute < 10) minute = '0' + minute.toString();
+        var second = date.getSeconds();
+        if (second < 10) second = '0' + second.toString();
+
+        date1.innerText = year + '年' + setMonth(date) + '月' + day + '日' + '星期' + setWeekday(date) + hour + ':' + minute + ':' + second + setAM(hour);
+    }, 500);
+</script>
+</body>
+</html>

@@ -1,0 +1,801 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>website</title>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        li {
+            list-style: none;
+        }
+
+        .Hello_World {
+            background-image: url("1.jpg");
+            background-size: 100% 100%;
+            width: 60%;
+            height: 500px;
+            margin: 0 auto;
+            overflow: hidden;
+        }
+
+        .Hello_World h1 {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .Hello_World_text {
+            width: 50%;
+            margin: 70px auto 40px auto;
+            word-wrap: break-word;
+            text-align: center;
+        }
+
+        .account {
+            width: 60%;
+            height: 40%;
+            border: 1px solid gray;
+            margin: 30px auto 0 auto;
+            text-align: center;
+        }
+
+        .account .account_form {
+            display: flex;
+            margin: 20px auto;
+        }
+
+        .page_sections {
+            width: 60%;
+            height: 400px;
+            margin: 0 auto;
+            overflow: hidden;
+        }
+
+        .page_sections .page_sections_title {
+            width: 65%;
+            text-align: center;
+            margin: 30px auto 0 auto;
+        }
+
+        .page_sections .page_sections_title p {
+            margin-bottom: 15px;
+        }
+
+        .page_sections .page_sections_items {
+            width: 80%;
+            margin: 20px auto;
+        }
+
+        .page_sections .page_sections_items .page_sections_items-items {
+            display: flex;
+            width: 100%;
+        }
+
+        .page_sections .page_sections_items .page_sections_items_item {
+            width: 45%;
+            height: 100px;
+            margin: 20px 20px 0 20px;
+            display: flex;
+        }
+
+        .page_sections .page_sections_items img {
+            width: 40px;
+            height: 40px;
+            margin-right: 10px;
+        }
+
+        .page_sections .page_sections_items p {
+            word-wrap: break-word;
+        }
+
+        .smart_car {
+            background: url("1.jpg");
+            background-size: 100% 100%;
+            width: 60%;
+            height: 500px;
+            margin: 0 auto;
+            overflow: hidden;
+        }
+
+        .smart_car .smart_car_box {
+            width: 88%;
+            margin-left: 12%;
+            height: 100%;
+            display: flex;
+        }
+
+        .smart_car .smart_car_box .smart_car_box_text {
+            width: 45%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .smart_car .smart_car_box .smart_car_box_text h2 {
+            width: 80%;
+            text-align: left;
+            margin-top: 20%;
+            margin-bottom: 20px;
+        }
+
+        .smart_car .smart_car_box .smart_car_box_text p {
+            word-wrap: break-word;
+            width: 80%;
+            text-align: left;
+        }
+
+        .CHECK_OUT {
+            height: 50px;
+            width: 45%;
+            background-color: white;
+            font-size: 18px;
+            border-style: none;
+            box-shadow: 0 0 5px black;
+        }
+
+        .TRY {
+            height: 50px;
+            width: 45%;
+            background-color: white;
+            font-size: 18px;
+            border-style: none;
+            opacity: 0.7;
+            margin-left: 20px;
+            box-shadow: 0 0 5px black;
+        }
+
+        .smart_car .smart_car_box .smart_car_box_material {
+            width: 55%;
+            height: 100%;
+            position: relative;
+            margin-right: 10px;
+        }
+
+        .smart_car .smart_car_box .smart_car_box_material .smart_car_box_material_body {
+            height: 88%;
+            width: 100%;
+            position: absolute;
+            top: 6%;
+            border: 1px solid dimgray;
+            border-radius: 20px;
+        }
+
+        .smart_car_box_material_body_inner {
+            width: 92%;
+            height: 92%;
+            margin: 4%;
+            background-color: white;
+            overflow: hidden;
+        }
+
+        .smart_car_box_material_body .smart_car_box_material_body_top {
+            width: 80%;
+            height: 20%;
+            text-align: center;
+            margin: 20px auto 0 auto;
+        }
+
+        .smart_car_box_material_body .smart_car_box_material_body_bottom {
+            width: 90%;
+            height: 60%;
+            margin: auto;
+            display: flex;
+        }
+
+        .smart_car_box_material_body_bottom li {
+            width: 30%;
+            height: 80%;
+            border: 1px solid dimgrey;
+            margin: auto 10px auto 0;
+            box-shadow: 0 0 5px black;
+        }
+
+        .smart_car_box_material_body_bottom li:first-child {
+            margin-left: 10px;
+        }
+
+        .smart_car_box_material_body_bottom li img {
+            width: 100%;
+            height: 50%;
+        }
+
+        .smart_car_box_material_body_bottom li h3 {
+            margin: 10px;
+        }
+
+        .smart_car_box_material_body_bottom li p {
+            margin: 10px;
+            word-wrap: break-word;
+        }
+
+        .try_products {
+            width: 60%;
+            height: 500px;
+            margin: 0 auto;
+            overflow: hidden;
+            text-align: center;
+            border-bottom: 1px solid lightgray;
+        }
+
+        .try_products p {
+            margin: 40px auto 15px auto;
+        }
+
+        .try_products h2 {
+            width: 50%;
+            margin: auto;
+        }
+
+        .try_products .try_products_bottom {
+            display: flex;
+            width: 100%;
+            margin-top: 30px;
+            height: 52%;
+        }
+
+        .try_products .try_products_text {
+            width: 28%;
+            margin: 20px;
+        }
+
+        .try_products .try_products_text p {
+            margin: 20px 0 10px 0;
+        }
+
+        .background_text {
+            width: 60%;
+            height: 500px;
+            margin: 0 auto;
+            overflow: hidden;
+            text-align: center;
+            border-bottom: 1px solid dimgrey;
+        }
+
+        .background_text .background_text_top {
+            width: 100%;
+            height: 43%;
+            margin-bottom: 2%;
+            margin-top: 7%;
+            display: flex;
+            position: relative;
+        }
+
+        .background_text .background_text_top img {
+            width: 50%;
+            height: 80%;
+            position: absolute;
+            left: 0;
+        }
+
+        .background_text .background_text_bottom {
+            width: 100%;
+            height: 43%;
+            margin-bottom: 5%;
+            display: flex;
+            position: relative;
+        }
+
+        .background_text .background_text_bottom img {
+            width: 50%;
+            height: 80%;
+            position: absolute;
+            right: 0;
+        }
+
+        .crew {
+            width: 60%;
+            height: 500px;
+            margin: 0 auto;
+            overflow: hidden;
+            text-align: center;
+            border-bottom: 1px solid lightgrey;
+        }
+
+
+        .crew .crew_text h3 {
+            margin: 30px auto 0 auto;
+            width: 50%;
+        }
+
+        .crew .crew_text p {
+            margin: 10px auto 0 auto;
+            width: 50%;
+            text-align: center;
+            word-wrap: break-word;
+        }
+
+        .crew .crew_img {
+            width: 80%;
+            height: 65%;
+            margin: 30px auto 0 auto;
+            overflow: hidden;
+        }
+
+        .crew .crew_img .crew_img_line {
+            width: 100%;
+            height: 45%;
+            display: flex;
+            margin: 0 0 1%;
+            position: relative;
+        }
+
+        .crew .crew_img .crew_img_line div {
+            margin: 0;
+        }
+
+        .crew .crew_img .crew_img_line div div {
+            width: 94%;
+            height: 91%;
+            margin: 3%;
+        }
+
+        .crew .crew_img .crew_img_line div:hover {
+            opacity: 0.6;
+        }
+
+        .crew .crew_img img {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            box-shadow: 0 0 5px gray;
+        }
+
+        .contact {
+            width: 60%;
+            height: 500px;
+            margin: 0 auto;
+            overflow: hidden;
+            border-bottom: 1px solid lightgrey;
+        }
+
+        .contact .contact_box {
+            width: 78%;
+            height: 82%;
+            margin: 5% auto;
+            display: flex;
+        }
+
+        .contact .contact_send {
+            height: 100%;
+            width: 48%;
+            border: 1px solid lightgrey;
+            border-radius: 10px;
+        }
+
+        .contact .contact_send .contact_send_input {
+            width: 80%;
+            height: 80%;
+            margin: 10%;
+            overflow: hidden;
+        }
+
+        .contact .contact_send .contact_send_input h3 {
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        .contact .contact_send .contact_send_input input {
+            height: 30px;
+            width: 100%;
+            margin-top: 20px;
+            border: 1px solid lightgrey;
+            border-radius: 3px;
+        }
+
+        .contact .contact_send .contact_send_input textarea {
+            width: 100%;
+            margin-top: 20px;
+            resize: none;
+        }
+
+        .contact .contact_send .contact_send_input button {
+            width: 100%;
+            height: 30px;
+            margin-top: 13px;
+            background-color: black;
+            color: white;
+            border: none;
+        }
+
+        .contact .contact_info {
+            height: 100%;
+            width: 48%;
+            margin-left: 4%;
+            overflow: hidden;
+        }
+
+        .contact .contact_info h2 {
+            margin: 50px 0 15px 20px;
+        }
+
+        .contact .contact_info p {
+            margin: 0 0 40px 20px;
+            word-wrap: break-word;
+            width: 70%;
+        }
+
+        .contact .contact_info .contact_info_location {
+            width: 70%;
+            height: 10%;
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+            margin-left: 20px;
+        }
+
+        .contact .contact_info .contact_info_location img {
+            width: 20px;
+            height: 20px;
+        }
+
+
+        .contact .contact_info .contact_info_location div {
+            width: 85%;
+            height: 100%;
+            margin-left: 5%;
+        }
+
+        .contact .contact_info .contact_info_location p {
+            margin: 3px 0 3px 0;
+            padding: 0;
+            font-size: 12px;
+        }
+
+        .footer {
+            width: 60%;
+            height: 200px;
+            color: white;
+            margin: 0 auto;
+            overflow: hidden;
+            text-align: left;
+            background-color: black;
+            display: flex;
+        }
+
+        .footer .footer_content_1 {
+            width: 55%;
+            height: 80%;
+            margin: 22px 0 0 100px;
+            display: flex;
+        }
+
+        .footer .footer_content_1 div {
+            width: 30%;
+            height: 100%;
+        }
+
+        .footer .footer_content_1 div h4 {
+            margin: 20px 0 0 5px;
+        }
+
+        .footer .footer_content_1 div p {
+            margin: 5px;
+            font-size: 12px;
+        }
+
+        .footer .footer_content_2 {
+            width: 30%;
+            height: 100%;
+            margin: 22px 0 0 22px;
+        }
+
+        .footer_content_2 h4 {
+            margin: 20px 0 0 5px;
+        }
+
+        .footer_content_2 p {
+            font-size: 12px;
+            margin: 5px;
+            word-wrap: break-word;
+            width: 60%;
+        }
+
+        .footer_content_2_img {
+            display: flex;
+            margin-top: 10px;
+        }
+
+        .footer_content_2_img img {
+            width: 30px;
+            height: 30px;
+            margin-right: 20px;
+        }
+
+        .footer_content_2_img img:first-child {
+            margin-left: 8px;
+        }
+
+    </style>
+</head>
+<body>
+<!--最上面的背景图-->
+<div class="Hello_World">
+    <div class="Hello_World_text">
+        <h1>Hello World</h1>
+        <p>111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111</p>
+    </div>
+
+    <!--登录框-->
+    <div class="account">
+        <h3 style="margin-top: 20px">CREATE YOUR ACCOUNT</h3>
+        <p>11111111</p>
+        <div class="account_form">
+            <form style="width: 80%">
+                <input type="text" style="height: 25px; width: 42%; opacity: 0.6; margin-left: 5%"
+                       placeholder="输入您的账号">
+                <input type="text" style="height: 25px; width: 42%; opacity: 0.6; margin-left: 5%"
+                       placeholder="请输入您的密码">
+            </form>
+
+            <button type="submit"
+                    style="background-color: lightgray; border-style: none; height: 25px; margin-left: 4%">
+                SIGN UP
+            </button>
+        </div>
+    </div>
+</div>
+
+<!--page sections-->
+<div class="page_sections">
+    <div class="page_sections_title">
+        <p>awesome</p>
+        <h3>ready-made.page sections ready-made.page sections ready-made.page sections</h3>
+    </div>
+
+    <div class="page_sections_items">
+        <div class="page_sections_items-items">
+            <!--mobile-->
+            <div class="page_sections_items_item">
+                <img src="account.png">
+                <div style="width: 80%">
+                    <h4>Mobile</h4>
+                    <p>11111111111111111111111111111111111111111</p>
+                </div>
+            </div>
+
+            <!--accessible-->
+            <div class="page_sections_items_item">
+                <img src="account.png">
+                <div style="width: 80%">
+                    <h4>Accessible</h4>
+                    <p>11111111111111111111111111111111111111111111</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="page_sections_items-items">
+            <!--fluid-->
+            <div class="page_sections_items_item">
+                <img src="account.png">
+                <div style="width: 80%">
+                    <h4>Fluid</h4>
+                    <p>11111111111111111111111111111111111111111111</p>
+                </div>
+            </div>
+
+            <!--customization-->
+            <div class="page_sections_items_item">
+                <img src="account.png">
+                <div style="width: 80%">
+                    <h4>customization</h4>
+                    <p>11111111111111111111111111111111111111111111</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--中间的背景图-->
+<div class="smart_car">
+    <div class="smart_car_box">
+        <!--text-->
+        <div class="smart_car_box_text">
+            <div>
+                <h2>Supportive policies for China's smart Car Please Join us Come on</h2>
+                <p>11111111111111111111111111111111</p>
+                <p>22222222222</p>
+                <p>33333333333333333333</p>
+                <p>444444444444444444444444444444</p>
+                <p>66666</p>
+                <p>999999999999</p>
+            </div>
+            <div style="margin-top: 30px; color: black">
+                <button type="button" class="CHECK_OUT">CHECK OUT TEATURES</button>
+                <button type="button" class="TRY">TRY PRODUCT FOR FREE</button>
+            </div>
+        </div>
+
+        <!--资料-->
+        <div class="smart_car_box_material">
+            <div class="smart_car_box_material_body">
+                <div class="smart_car_box_material_body_inner">
+                    <div class="smart_car_box_material_body_top">
+                        <h2>资料</h2>
+                        <p>1111111111111111111111</p>
+                    </div>
+
+                    <ul class="smart_car_box_material_body_bottom">
+                        <li>
+                            <img src="2.jpg">
+                            <h3>教程</h3>
+                            <p>1111111111111111</p>
+                        </li>
+                        <li>
+                            <img src="2.jpg">
+                            <h3>教程</h3>
+                            <p>1111111111111111</p>
+                        </li>
+                        <li>
+                            <img src="2.jpg">
+                            <h3>教程</h3>
+                            <p>1111111111111111</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--Try Our Awesome Products-->
+<div class="try_products">
+    <p>111111111111111111</p>
+    <h2>Try Our Products Try Our Products Try</h2>
+    <div class="try_products_bottom">
+        <div class="try_products_text">
+            <h3>item</h3>
+            <p>Try Our ProductsTry Our ProductsTry Our ProductsTry Our ProductsTry Our ProductsTry Our ProductsTry Our
+                ProductsTry Our Products</p>
+        </div>
+        <div class="try_products_text">
+            <h3>item</h3>
+            <p>Try Our ProductsTry Our ProductsTry Our ProductsTry Our ProductsTry Our ProductsTry Our ProductsTry Our
+                ProductsTry Our ProductsTry Our ProductsTry</p>
+        </div>
+        <div class="try_products_text">
+            <h3>item</h3>
+            <p>Try Our ProductsTry Our ProductsTry Our ProductsTry Our ProductsTry Our ProductsTry Our ProductsTryTry
+                Our ProductsTry Our ProductsTry Our ProductsTry Our</p>
+        </div>
+    </div>
+</div>
+
+<!--下面的背景图-->
+<div class="background_text">
+    <div class="background_text_top">
+        <img src="1.jpg">
+        <div style="position: absolute; right: 0; text-align: left; width: 42%;">
+            <h3 style="word-wrap: break-word">item1 item1 item1 item1 item1 item1 item1item1 item1 item1</h3>
+            <p style=" margin-top: 10px; word-wrap: break-word">
+                11111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111</p>
+        </div>
+    </div>
+    <div class="background_text_bottom">
+        <div style="position: absolute; left: 0; text-align: left; width: 42%">
+            <h3 style="word-wrap: break-word">itm2item1item1item1item1item1item1item1item1item1item1item1</h3>
+            <p style="margin-top: 10px; word-wrap: break-word">
+                222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222</p>
+        </div>
+        <img src="1.jpg">
+    </div>
+</div>
+
+<!--Our Awesome Crew-->
+<div class="crew">
+
+    <div class="crew_text">
+        <h3>Our Awesome Crew</h3>
+        <p>11111111111111111111111111111111111111111111111111111111111111</p>
+    </div>
+    <div class="crew_img">
+        <div class="crew_img_line">
+            <!--第一张图片-->
+            <div>
+                <div>
+                    <img src="2.jpg">
+                </div>
+            </div>
+            <!--第二张图片-->
+            <div>
+                <div>
+                    <img src="2.jpg">
+                </div>
+            </div>
+        </div>
+
+        <div class="crew_img_line">
+            <div>
+                <div>
+                    <img src="2.jpg">
+                </div>
+            </div>
+            <div>
+                <div>
+                    <img src="2.jpg">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--Contact-->
+<div class="contact">
+    <div class="contact_box">
+        <div class="contact_send">
+            <div class="contact_send_input">
+                <h3>FELL FREE TO WRITE US</h3>
+                <div>
+                    <input type="email" placeholder="Email">
+                    <input type="text" placeholder="Subject">
+                    <textarea name="content" rows="7" placeholder="Message"></textarea>
+                    <button type="submit">SEND</button>
+                </div>
+            </div>
+
+        </div>
+        <div class="contact_info">
+            <h2>Contacts</h2>
+            <p>111111111111111111111111111111111111</p>
+            <div class="contact_info_location">
+                <img src="3.jpg">
+                <div>
+                    <p>111111111</p>
+                    <p>333333333333</p>
+                </div>
+            </div>
+            <div class="contact_info_location">
+                <img src="3.jpg">
+                <p style="margin-left: 5%">4444444444444444</p>
+            </div>
+            <div class="contact_info_location">
+                <img src="3.jpg">
+                <p style="margin-left: 5%">6666666666666</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--最底部-->
+<div class="footer">
+    <div class="footer_content_1">
+        <div>
+            <h4>LEARN MORE</h4>
+            <p>11111111</p>
+            <p>33333333333</p>
+            <p>4444444444</p>
+            <p>6666666</p>
+        </div>
+        <div>
+            <h4>ABOUT US</h4>
+            <p>11111111</p>
+            <p>33333333333</p>
+            <p>4444444444</p>
+            <p>6666666</p>
+        </div>
+        <div>
+            <h4>SUPPORT</h4>
+            <p>11111111</p>
+            <p>33333333333</p>
+            <p>4444444444</p>
+            <p>6666666</p>
+        </div>
+    </div>
+    <div class="footer_content_2">
+        <h4>ENJOY THE ENDING</h4>
+        <p>1111111111111111111111111111111111111111</p>
+        <div class="footer_content_2_img">
+            <img src="3.jpg">
+            <img src="3.jpg">
+            <img src="3.jpg">
+            <img src="3.jpg">
+        </div>
+    </div>
+</div>
+
+<div>
+    1111111111111111111111
+</div>
+</body>
+</html>
