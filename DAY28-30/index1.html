@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        .email-sug {
+            list-style-type: none;
+            margin: 0px;
+            padding: 0px;
+            width: 150px;
+            height: 22px;
+            line-height: 22px;
+            font-size: 14px;
+        }
+
+        li:hover {
+            background-color: antiquewhite;
+        }
+    </style>
+</head>
+<body>
+<div class="wrapper">
+    <label for="email-input"></label><input id="email-input" type="text">
+    <ul id="email-sug-wrapper" class="email-sug"></ul>
+</div>
+
+<script type="text/javascript">
+    var postfixList = ['163.com', 'gmail.com', '126.com', 'qq.com', '263.net'];
+    var input = document.getElementById("email-input");
+    var ul = document.getElementById("email-sug-wrapper");
+
+    input.onfocus = function () {
+        getInput();
+        addPrompt();
+        displayOrHide();
+    };
+
+    ul.onclick = function (e) {
+        var ev = e || window.event;
+        var target = ev.target || ev.srcElement;
+        if (target.nodeName.toUpperCase() === 'LI') {
+            input.value = target.innerText;
+            hide();
+        }
+    };
+
+    function getInput() {
+        var input1 = input.value;
+        return input1.trim();
+    }
+
+
+    //将输入和后缀连接
+    function setPrompt() {
+        var input1 = input.value;
+        var input2, input3;
+        var flag = 0;
+        if (input1.indexOf('@') === -1) {
+            input2 = input1;
+        } else {
+            input2 = input1.splice(0, input1.indexOf('@'));
+            input3 = input1.splice(input1.indexOf('@') + 1);
+        }
+
+        var res = [];
+        for (let i = 0; i < postfixList.length; i++) {
+            if (postfixList[i].indexOf(input3) === 0) {
+                res[i] = input2 + '@' + postfixList[i];
+                flag = 1;
+            }
+        }
+
+        //当输入的邮箱后缀是错的时，将自动把'@'前面的和后缀匹配在一起
+        if (flag === 0) {
+            for (let i = 0; i < postfixList.length; i++) {
+                res[i] = input2 + '@' + postfixList[i];
+            }
+        }
+
+        for (let i = 0; i < res, length; i++) {
+            if (res[i] === undefined || res[i] === '') {
+                res.splice(i, 1);
+                i--;
+            }
+        }
+        return res;
+    }
+
+    //设置ul的所有显示
+    function addPrompt() {
+        var prompt = setPrompt();
+        var len = ul.childNodes.length;
+        for (let i = len - 1; i >= 0; i--) {
+            ul.removeChild(ul.childNodes[i]);
+        }
+        for (let i = 0; i < len; i++) {
+            var li = document.createElement('li');
+            li.innerHTML = prompt[i];
+            ul.appendChild(li);
+        }
+    }
+
+    function displayOrHide() {
+        var input1 = input.value;
+        if (input1 === '') {
+            hide();
+        } else {
+            display();
+        }
+    }
+
+    function hide() {
+        ul.style.display = "none";
+    }
+
+    function display() {
+        ul.style.display = "block";
+    }
+
+</script>
+</body>
+</html>
