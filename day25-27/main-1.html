@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link type="text/css" href="main.css" rel="stylesheet">
+</head>
+<body>
+
+<p id="time"></p>
+
+<script type="text/javascript">
+    function time() {
+        var date = new Date();
+        var year = date.getFullYear();
+        var month = date.getMonth() + 1 < 10 ? '0' + (date.getMonth() + 1) : date.getMonth();
+        var day = date.getDate() < 10 ? '0' + date.getDate() : date.getDate();
+        var weekday = date.getDay();
+        var hour = date.getHours() < 10 ? ('0' + date.getHours()) : date.getHours();
+        var minute = date.getMinutes() < 10 ? ('0' + date.getMinutes()) : date.getMinutes();
+        var second = date.getSeconds() < 10 ? ('0' + date.getSeconds()) : date.getSeconds();
+
+        //获取星期
+        function getWeekDay(d) {
+            switch (d) {
+                case 0:
+                    d = 'Sunday';
+                    break;
+                case 1:
+                    d = 'Monday';
+                    break;
+                case 2:
+                    d = 'Tuesday';
+                    break;
+                case 3:
+                    d = 'Wednesday';
+                    break;
+                case 4:
+                    d = 'Thursday';
+                    break;
+                case 5:
+                    d = 'Friday';
+                    break;
+                case 6:
+                    d = 'Saturday';
+                    break;
+            }
+            return d;
+        }
+
+        //am/pm
+        function getM() {
+            if (hour > 12) {
+                return 'Pm';
+            } else {
+                return 'Am';
+            }
+        }
+
+        document.getElementById('time').innerHTML = year + '-' + month + '-' + day + ' ' + getWeekDay(weekday) + ' ' + hour + ':' + minute + ':' + second + getM();
+    }
+
+
+    setInterval('time()', 100);
+</script>
+</body>
+</html>
