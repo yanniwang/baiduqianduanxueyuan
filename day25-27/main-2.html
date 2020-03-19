@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div>
+    <select id="year-select">
+        <option value="">请选择年份</option>
+    </select>
+
+    <select id="month-select">
+        <option value="">请选择月份</option>
+    </select>
+
+    <select id="day-select">
+        <option value="">请选择日</option>
+    </select>
+
+    <select id="hour-select">
+        <option value="">请选择小时</option>
+    </select>
+
+    <select id="minute-select">
+        <option value="">请选择分钟</option>
+    </select>
+
+    <select id="second-select">
+        <option value="">请选择秒数</option>
+    </select>
+</div>
+
+<p id="result-wrapper"></p>
+
+<script type="text/javascript">
+    var id = document.getElementById('result-wrapper');
+    var year = document.getElementById('year-select');
+    var month = document.getElementById('month-select');
+    var day = document.getElementById('day-select');
+    var hour = document.getElementById('hour-select');
+    var minute = document.getElementById('minute-select');
+    var second = document.getElementById('second-select');
+
+
+    //设置年、月、时、分、秒
+    function setOptions() {
+        //获取现在时间
+        var date = new Date();
+        var this_year = date.getFullYear();
+
+
+        //设置选择的年
+        for (let i = (this_year - 30); i < (this_year + 30); i++) {
+            year.options.add(new Option(i + " 年"));
+        }
+
+        //设置月份
+        for (let i = 1; i <= 12; i++) {
+            month.options.add(new Option((i < 10 ? ('0' + i) : i) + '月'));
+        }
+
+        //设置小时
+        for (let i = 1; i <= 24; i++) {
+            hour.options.add(new Option(i < 10 ? ('0' + i) : i));
+        }
+
+        //设置分钟
+        for (let i = 1; i <= 60; i++) {
+            minute.options.add(new Option(i < 10 ? ('0' + i) : i));
+        }
+
+        //设置秒
+        for (let i = 0; i <= 60; i++) {
+            second.options.add(new Option(i < 10 ? ('0' + i) : i));
+        }
+    }
+
+    setOptions();
+
+    //判断年是否是闰年
+    function isPinYear(y) {
+        if (y % 4 === 0) {
+            if (y % 100 !== 0) {
+                return true;
+            } else if (y % 400 === 0) {
+                return true;
+            } else {
+                return false;
+            }
+        } else {
+            return false;
+        }
+    }
+
+    //设置日子,当选择的年份和月份变化时，设置日子的选择
+    year.onchange = function () {
+        let index = year.selectedIndex;//选中索引
+        var text = year.options[index].text; // 选中文本
+
+        if (isPinYear(text) === true) {
+            month.onchange = function () {
+                let month_index = month.selectedIndex;
+                let month_text = month.options[month_index].text;
+
+                if (month_text === '2') {
+                    for (let i = 1; i <= 29; i++) {
+                        day.options.add(new Option((i < 10 ? ('0' + i) : i) + '日'));
+                    }
+                } else if (month_text % 2 === 0 && month_text !== '8' && month_text !== '2') {
+                    for (let i = 1; i <= 30; i++) {
+                        day.options.add(new Option((i < 10 ? ('0' + i) : i) + '日'));
+                    }
+                } else {
+                    for (let i = 1; i <= 31; i++) {
+                        day.options.add(new Option((i < 10 ? ('0' + i) : i) + '日'));
+                    }
+                }
+            };
+
+        } else {
+            month.onchange = function () {
+                let month_index = month.selectedIndex;
+                let month_text = month.options[month_index].text;
+
+                if (month_text === '2') {
+                    for (let i = 1; i <= 28; i++) {
+                        day.options.add(new Option((i < 10 ? ('0' + i) : i) + '日'));
+                    }
+                } else if (parseInt(month_text) % 2 === 0 && month_text !== '8' && month_text !== '2') {
+                    for (let i = 1; i <= 30; i++) {
+                        day.options.add(new Option((i < 10 ? ('0' + i) : i) + '日'));
+                    }
+                } else {
+                    for (let i = 1; i <= 31; i++) {
+                        day.options.add(new Option((i < 10 ? ('0' + i) : i) + '日'));
+                    }
+                }
+            }
+        }
+    };
+
+    //获取选择时间
+    function getSelectedTime() {
+        var year_select = year.options[year.selectedIndex].text;
+        var month_selext = month.options[month.selectedIndex].text;
+        var day_select = day.options[day.selectedIndex].text;
+        var hour_select = hour.options[hour.selectedIndex].text;
+        var minute_select = minute.options[minute.selectedIndex].text;
+        var second_select = second.options[second.selectedIndex].text;
+        return year_select + '-' + month_selext + '-' + day_select + '' + hour_select + ':' + minute_select + ':' + second_select;
+    }
+
+    //所选时间与当前时间的时间差
+    function distance() {
+        var now = new Date();
+        var timeSelectStr = year.options[year.selectedIndex].text.substr(0, 4) + "/" + month.options[month.selectedIndex].text.substr(0, 2) + "/" + day.options[day.selectedIndex].text.substr(0, 2) + " " + hour.options[hour.selectedIndex].text + ":" + minute.options[minute.selectedIndex].text +
+            ":" + second.options[second.selectedIndex].text;
+        var SelectTime = new Date(timeSelectStr);
+        var secondDistance = now.getTime() - SelectTime.getTime();
+
+        var str;
+        if (secondDistance < 0) {
+            secondDistance = -secondDistance;
+            str = " 还有";
+        } else {
+            str = " 已经过去";
+        }
+
+        var daym = secondDistance / 86400000;
+        var hourm = (secondDistance % 86400000) / 3600000;
+        var minutem = ((secondDistance % 86400000) % 3600000) / 60000;
+        var secondm = (((secondDistance % 86400000) % 3600000) % 60000) / 1000;
+
+        return str + parseInt(daym) + "天" + parseInt(hourm) + "小时" + parseInt(minutem) + "分" + parseInt(secondm) +
+            "秒";
+    }
+
+    //显示结果
+    function getResult() {
+        id.innerHTML = '现在距离' + getSelectedTime() + distance();
+    }
+
+    setInterval(getResult, 1000);
+</script>
+</body>
+</html>
