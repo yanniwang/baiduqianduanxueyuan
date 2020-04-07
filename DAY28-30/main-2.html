@@ -80,24 +80,31 @@
             let afterContent = text.substring(index);
             //如果@后面的字符穿存在
             if (afterContent.trim().length > 0) {
+                ul.innerHTML = '';
                 //判断后缀是否在post后缀列表中有匹配
+                var arr = [];
+
                 for (let i = 0; i < postfixList.length; i++) {
-                    if (postfixList[i].indexOf(afterContent) > -1) {
+                    if (postfixList[i].indexOf(afterContent) === 0) {
                         //只将符合后缀的部分进行拼接
-                        var li = document.createElement('li');
-                        var li_text = document.createTextNode(beforeContent + postfixList[i]);
-                        li.className += 'email-sug-li';
-                        li.appendChild(li_text);
-                        ul.appendChild(li);
-                    } else {
-                        add(beforeContent);
+                        arr.push(postfixList[i]);
                     }
+                }
+                if (arr.length > 0) {
+                    for (let i = 0; i < arr.length; i++) {
+                        let li = document.createElement('li');
+                        let li_text = document.createTextNode(beforeContent + arr[i]);
+                        li.appendChild(li_text);
+                        li.className += 'email-sug-li';
+                        ul.appendChild(li);
+                    }
+                } else {
+                    add(beforeContent);
                 }
             } else {
                 //若@后面没有字符
                 add(beforeContent);
             }
-
         } else {
             //没有则直接拼接
             add(text);
