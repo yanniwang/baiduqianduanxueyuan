@@ -59,6 +59,7 @@
 
     //拼接
     function add(value) {
+        ul.innerHTML = '';
         for (let i = 0; i < postfixList.length; i++) {
             let li = document.createElement('li');
             let li_text = document.createTextNode(value + postfixList[i]);
@@ -80,7 +81,7 @@
             //如果@后面的字符穿存在
             if (afterContent.trim().length > 0) {
                 //判断后缀是否在post后缀列表中有匹配
-                for (let i = 0  ; i < postfixList.length ; i ++) {
+                for (let i = 0; i < postfixList.length; i++) {
                     if (postfixList[i].indexOf(afterContent) > -1) {
                         //只将符合后缀的部分进行拼接
                         var li = document.createElement('li');
@@ -88,6 +89,8 @@
                         li.className += 'email-sug-li';
                         li.appendChild(li_text);
                         ul.appendChild(li);
+                    } else {
+                        add(beforeContent);
                     }
                 }
             } else {
