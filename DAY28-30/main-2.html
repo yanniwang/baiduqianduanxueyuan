@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>email</title>
+    <style type="text/css">
+        html body ul input {
+            margin: 0;
+            padding: 0;
+        }
+
+        .email-sug {
+            list-style: none;
+            width: 200px;
+        }
+
+        .email-input {
+            width: 200px;
+            height: 20px;
+            line-height: 20px;
+        }
+
+        ul {
+            padding-inline-start: 0;
+            margin-block-end: 0;
+            margin-block-start: 0;
+            width: 200px;
+        }
+
+        .email-sug-li {
+            height: 20px;
+            line-height: 20px;
+            width: 100%;
+            border-left: 1px solid grey;
+            border-right: 1px solid grey;
+            border-bottom: 1px solid grey;
+            overflow: hidden;
+        }
+
+        .email-sug-li:hover {
+            background-color: aqua;
+            cursor: pointer;
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="wrapper">
+    <input id="email-input" type="text" class="email-input">
+    <ul id="email-sug-wrapper" class="email-sug"></ul>
+</div>
+
+<script type="text/javascript">
+    var postfixList = ['@163.com', '@gmail.com', '@126.com', '@qq.com', '@263.net'];
+    var email_input = document.getElementById('email-input');
+    var ul = document.getElementById('email-sug-wrapper');
+
+
+    //拼接
+    function add(value) {
+        for (let i = 0; i < postfixList.length; i++) {
+            let li = document.createElement('li');
+            let li_text = document.createTextNode(value + postfixList[i]);
+            //增添class
+            li.className += 'email-sug-li';
+            li.appendChild(li_text);
+            ul.appendChild(li);
+        }
+    }
+
+    //判断输入的内容后进行拼接
+    function content(text) {
+        //首先判断输入的时候含有@
+        if (text.indexOf('@') >= 0) {
+            //有则需要将@前面和后面分开
+            let index = text.indexOf('@');
+            let beforeContent = text.substring(0, index);
+            let afterContent = text.substring(index);
+            //如果@后面的字符穿存在
+            if (afterContent.trim().length > 0) {
+                //判断后缀是否在post后缀列表中有匹配
+                for (let i = 0  ; i < postfixList.length ; i ++) {
+                    if (postfixList[i].indexOf(afterContent) > -1) {
+                        //只将符合后缀的部分进行拼接
+                        var li = document.createElement('li');
+                        var li_text = document.createTextNode(beforeContent + postfixList[i]);
+                        li.className += 'email-sug-li';
+                        li.appendChild(li_text);
+                        ul.appendChild(li);
+                    }
+                }
+            } else {
+                //若@后面没有字符
+                add(beforeContent);
+            }
+
+        } else {
+            //没有则直接拼接
+            add(text);
+        }
+    }
+
+    //对input的监听
+    email_input.onkeyup = function () {
+        let value = email_input.value.trim();
+        if (!!value) {
+            //先将前面生成的清除掉
+            ul.innerHTML = '';
+            content(value);
+        } else {
+            ul.innerHTML = '';
+        }
+    }
+
+</script>
+</body>
+</html>
