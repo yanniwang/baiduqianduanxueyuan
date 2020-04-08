@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8"/>
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="ife31data.js"></script>
+    <style>
+        table {
+            margin-top: 15px;
+            border-collapse: collapse;
+            border: 1px solid #aaa;
+            width: 100%;
+        }
+
+        table th {
+            vertical-align: baseline;
+            padding: 5px 15px 5px 6px;
+            background-color: #3F3F3F;
+            border: 1px solid #3F3F3F;
+            text-align: center;
+            color: #fff;
+        }
+
+        table td {
+            vertical-align: center;
+            padding: 6px 15px 6px 6px;
+            border: 1px solid #aaa;
+            text-align: center;
+        }
+
+        table tr:nth-child(odd) {
+            background-color: #F5F5F5;
+        }
+
+        table tr:nth-child(even) {
+            background-color: #fff;
+        }
+    </style>
+</head>
+
+<body>
+<select id="product-select">
+    <option hidden="true">商品</option>
+    <option>手机</option>
+    <option>笔记本</option>
+    <option>智能音箱</option>
+</select>
+
+<select id="region-select">
+    <option hidden="true">地区</option>
+    <option>华东</option>
+    <option>华北</option>
+    <option>华南</option>
+</select>
+<hr>
+<div id="table-wrapper">
+</div>
+<script>
+    var productSelect = document.getElementById("product-select");
+    var regionSelect = document.getElementById("region-select");
+    var tableDiv = document.getElementById("table-wrapper");
+
+
+    regionSelect.onchange = function () {
+        //渲染新的表格(根据select选项获取数据)
+        getTable();
+    };
+
+    productSelect.onchange = function () {
+        //渲染新的表格(根据select选项获取数据)
+        getTable();
+    };
+
+    function getData() {
+        //返回数据
+        var regionText = regionSelect.value;
+        var productText = productSelect.value;
+        var arr = [];
+        for (var i = 0; i < sourceData.length; i++) {
+            if (sourceData[i].region === regionText && sourceData[i].product === productText) {
+                arr.push(sourceData[i]);
+            }
+        }
+        console.log(arr);
+        return arr;
+    }
+
+    function getTable() {
+        //将本在div中的table删除
+        //重新创建一个新的table
+        tableDiv.removeChild(tableDiv.childNodes[0]);
+        var table = document.createElement("table");
+        // 输出表头：商品、地区、1月、2月、…… 12月
+        var headTable = ["商品", "地区", "1月", "2月", "3月", "4月", "5月", "6月", "7月", "8月", "9月", "10月", "11月", "12月"];
+        //这是创建的thead
+        var header = table.createTHead();
+        //在第0行插入一行thead
+        var tr0 = header.insertRow(0);
+        //遍历headTable
+        for (var i = 0; i < headTable.length; i++) {
+            //通过insertCell()方法向thead中加入th，tr0.cells.length是把th插入行中指定的位置下标
+            var th = tr0.insertCell(tr0.cells.length);
+            th.innerHTML = headTable[i];
+        }
+
+        //获得数据
+        var arr = getData();
+        //遍历返回的数据数组
+        for (let i = 0; i < arr.length; i++) {
+            //新增行
+            var tr = table.insertRow(table.rows.length);
+            //第一个值product
+            var td = tr.insertCell(0);
+            td.innerHTML = arr[i].product;
+            //第二个值region
+            var td = tr.insertCell(1);
+            td.innerHTML = arr[i].region;
+            //遍历sale数组
+            for (var j = 0; j < 12; j++) {
+                //在j + 2下标的前面插入
+                var td = tr.insertCell(j + 2);
+                td.innerHTML = arr[i].sale[j];
+            }
+        }
+        //把生成的HTML内容赋给table - wrapper
+        document.querySelector("#table-wrapper").appendChild(table);
+    }
+    //createHead()：表格中获取或创建 <thead> 元素
+    //insertRow()：在表格中的指定位置插入一个新行。
+    //insertCell()：向新增行中添加td
+</script>
+</body>
+</html>
