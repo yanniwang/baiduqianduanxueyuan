@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tab</title>
+
+    <style type="text/css">
+        div {
+            width: 200px;
+            height: 100px;
+            display: none;
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+
+
+<button style="background-color: red; color: #fff">按钮一</button>
+<button>按钮二</button>
+<button>按钮三</button>
+
+<div style="display: block; background-color: green"></div>
+<div style="background-color: blue; display: none"></div>
+<div style="background-color: aqua; display: none;"></div>
+
+
+<script type="text/javascript">
+    var btnLists = document.getElementsByTagName('button');
+    var divLists = document.getElementsByTagName('div');
+
+    for (let i = 0; i < btnLists.length; i++) {
+        btnLists[i].onclick = function () {
+            for (var j = 0; j < btnLists.length; j++) {
+                btnLists[j].style.color = "";
+                btnLists[j].style.backgroundColor = "";
+                divLists[j].style.display = "none";
+            }
+            this.style.color = "yellow";
+            this.style.backgroundColor = "#f60";
+            divLists[i].style.display = "block";
+        }
+    }
+</script>
+</body>
+</html>
